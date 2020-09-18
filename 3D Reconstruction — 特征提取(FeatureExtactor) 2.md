@@ -60,6 +60,9 @@
         差分金字塔的是在高斯金字塔的基础上操作的，其建立过程是：在高斯金子塔中的每组中相邻两层相减（下一层减上一层）就生成高斯差分金字塔.
         高斯差分金字塔其操作如下图：
         ![img10](res/image10.jpg)
-        在减小图像尺寸的场合经常使用高斯模糊，在进行欠采样时，通常在采样之前进行低通滤波处理。这样就保证在采样时图像中不会出现虚假的高频信息。
-        高斯模糊：
-        $$\mathrm{G}(r)=\frac{1}{2\pi\sigma^2}\exp\left(-\frac{r^2}{2\sigma^2}\right)$$
+        $DoG$算子只需相邻尺度高斯平滑后图像相减，因此简化了计算！
+        $DoG$算子：
+        $$\mathrm{D}(x, y, \sigma)=\left[\mathrm{G}(x, y, k\sigma)-\mathrm{G}(x, y, \sigma) \right] * \mathrm{I}(x, y) \\
+        = \mathrm{L}(x, y, k\sigma) - \mathrm{L}(x, y, \sigma)$$
+        
+        
